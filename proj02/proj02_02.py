@@ -11,3 +11,10 @@ previous two numbers in the sequence. The sequence looks like this:
 """
 
 
+a= int(raw_input("How many Fibonacci numbers to generate?: "))
+x=1
+for number in (1,a+1):
+    FN=number+x+(y-x)
+    x=y
+    y=FN
+print FN
