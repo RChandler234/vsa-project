@@ -103,9 +103,9 @@ def square(side):
 
 def pythagorean(a,b,c):
     if square(a) + square(b)==square(c):
-        return "true"
+        return True
     else:
-        return "false"
+        return False
 
 
 def is_right(side1, side2, side3):
@@ -114,7 +114,7 @@ def is_right(side1, side2, side3):
     a=small[0]
     b=small[1]
     c=big
-    if pythagorean(a,b,c)=="true":
+    if pythagorean(a,b,c):
         return True
     else:
         return False
