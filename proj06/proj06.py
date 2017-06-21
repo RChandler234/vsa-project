@@ -46,3 +46,16 @@ def choose_word(wordlist):
 wordlist = load_words()
 
 # your code begins here!
+word=choose_word(wordlist)
+length=len(word)
+letters=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+print "Welcome to Hangman!"
+print "I am thinking of a word that is", length, "letters long."
+guess=13
+if guess !=0:
+    print "You have", guess, "guesses left."
+    print "Available letters:", letters
+    player_g=raw_input("Please guess a letter: ")
+    if player_g in letters:
+        print "something"
+    else:
