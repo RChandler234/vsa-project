@@ -1,36 +1,56 @@
-# Name:
-# Date:
+# Name: Reid Chandler
+# Date: 6/21/17
 
 # proj05: functions and lists
 
 # Part I
+import random
 
 def divisors(num):
-    """
-    Takes a number and returns all divisors of the number, ordered least to greatest
-    :param num: int
-    :return: list (int)
-    """
-    return 0
+    divisor_list=[]
+    for divisor in range(1, num + 1):
+        z = num % divisor
+        if z == 0:
+            divisor_list.append(divisor)
+    return divisor_list
+
+
 
 def prime(num):
-    """
-    Takes a number and returns True if the number is prime, otherwise False
-    :param num: int
-    :return: bool
-    """
-    return False
+    divisor_list=divisors(num)
+    list_length = len(divisor_list)
+    if list_length < 3:
+        return True
+    else:
+        return False
+
 
 # Part II
 
 def intersection(lst1, lst2):
-    """
-    Takes two lists and returns a list of the elements in common between the lists
-    :param lst1: list, any type
-    :param lst2: list, any type
-    :return: list, any type
-    """
+    lst3=[]
+    lst4=lst2
+    if len(lst1)== 0:
+        return []
+    elif len(lst2)== 0:
+        return []
+    else:
+        while lst1 != []:
+            if len(lst2)== 0:
+                lst2 = lst4
+                lst1 = lst1[1:]
+            elif lst2[0]==lst1[0]:
+                lst3.append(lst2[0])
+                lst2=lst2[1:]
+            elif lst2 != []:
+                lst2 = lst2[1:]
+        return lst3
+
+
     return ["test"]
+
+
+
 
 # Part III
 
@@ -84,7 +104,7 @@ def is_right(side1, side2, side3):
 
 # TESTS
 # Feel free to add your own tests as needed!
-
+""""
 print ("Divisors Tests")
 # Test 1
 if divisors(1) == [1]:
@@ -153,6 +173,7 @@ if intersection(L4, L5) == [5, 7]:
     print("Test 10: PASS\n")
 else:
     print("Test 10: FAIL\n")
+"""
 
 print("Is_Right Tests")
 # Test 11
