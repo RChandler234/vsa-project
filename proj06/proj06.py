@@ -44,18 +44,53 @@ def choose_word(wordlist):
 # the wordlist variable so that it can be accessed from anywhere
 # in the program
 wordlist = load_words()
-
-# your code begins here!
 word=choose_word(wordlist)
+word_copy=word
 length=len(word)
-letters=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+guessed=[]
+lst_word=[]
+blank=""
+counter=10000
+for number in range (1, length+1):
+    lst_word.append(word_copy[0])
+    word_copy=word_copy[1:]
+for stuff in range (1,length+1):
+    blank = blank + "_"
+
+def add(letter):
+    guessed.append(letter)
+
+an=[]
+def correct(ltr, word):
+    answer=an
+    alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"
+    for thing in range (0,length):
+        if ltr == word[thing]:
+            """"
+            if answer[thing] in alphabet:
+                answer = answer
+            else:
+             """
+            """
+            answer=answer+ltr
+        else:
+            answer = answer + "_"
+            """
+            an.append(ltr)
+    return answer
+
 print "Welcome to Hangman!"
 print "I am thinking of a word that is", length, "letters long."
-guess=13
-if guess !=0:
+print word
+guess=8
+while guess !=0 and lst_word !=blank:
     print "You have", guess, "guesses left."
-    print "Available letters:", letters
+    print "You have guessed:", guessed
     player_g=raw_input("Please guess a letter: ")
-    if player_g in letters:
-        print "something"
+    if player_g in lst_word:
+        add(player_g)
+        print correct(player_g, word)
+        counter=counter-1
     else:
+        add(player_g)
+        guess=guess-1
