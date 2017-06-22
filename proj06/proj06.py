@@ -49,48 +49,168 @@ word_copy=word
 length=len(word)
 guessed=[]
 lst_word=[]
-blank=""
+blank=[]
 counter=10000
 for number in range (1, length+1):
     lst_word.append(word_copy[0])
     word_copy=word_copy[1:]
 for stuff in range (1,length+1):
-    blank = blank + "_"
+    blank.append('_')
+
+
+
+
+
 
 def add(letter):
     guessed.append(letter)
 
-an=[]
-def correct(ltr, word):
-    answer=an
-    alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"
+
+def correct(ltr, word,an):
+
     for thing in range (0,length):
         if ltr == word[thing]:
-            """"
-            if answer[thing] in alphabet:
-                answer = answer
-            else:
-             """
-            """
-            answer=answer+ltr
-        else:
-            answer = answer + "_"
-            """
-            an.append(ltr)
-    return answer
+            an[thing]=ltr
+    return an
 
 print "Welcome to Hangman!"
 print "I am thinking of a word that is", length, "letters long."
-print word
 guess=8
-while guess !=0 and lst_word !=blank:
+while guess !=0:
     print "You have", guess, "guesses left."
-    print "You have guessed:", guessed
+    print "You have guessed the letters:", guessed
     player_g=raw_input("Please guess a letter: ")
+    wrong=correct(player_g, word, blank)
+    player_g=player_g.lower()
     if player_g in lst_word:
         add(player_g)
-        print correct(player_g, word)
-        counter=counter-1
+        print "Good guess:", correct(player_g, word,blank)
+        if lst_word == correct(player_g, word, blank):
+            print "Congratulations, You won. The man lives to hang another day. The word was", word
+            break
     else:
         add(player_g)
         guess=guess-1
+        print "Sorry, that letter is not in my word:", wrong
+        if guess==7:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+        elif guess==6:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0           2"
+            print "0           2"
+            print "0           2"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+        elif guess==5:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0          32"
+            print "0         3 2"
+            print "0        3  2"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+        elif guess ==4:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0          323"
+            print "0         3 2 3"
+            print "0        3  2  3"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+            print "0"
+        elif guess==3:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0          323"
+            print "0         3 2 3"
+            print "0        3  2  3"
+            print "0          6"
+            print "0         6"
+            print "0        6"
+            print "0"
+            print "0"
+            print "0"
+        elif guess==2:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0          323"
+            print "0         3 2 3"
+            print "0        3  2  3"
+            print "0          6 6"
+            print "0         6   6"
+            print "0        6     6"
+            print "0"
+            print "0"
+            print "0"
+        elif guess==1:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0          323"
+            print "0         3 2 3"
+            print "0        3  2  3"
+            print "0          6 6"
+            print "0         6   6"
+            print "0        1     1"
+            print "0      __1     1__"
+            print "0"
+            print "0"
+        elif guess==0:
+            print "0000000000000"
+            print "0           0"
+            print "0           1"
+            print "0          1 1"
+            print "0           1"
+            print "0          323"
+            print "0         3 2 3"
+            print "0        3  2  3"
+            print "0          6 6"
+            print "0         6   6"
+            print "0        1     1"
+            print "0      __1     1__"
+            print "0"
+            print "0          RIP"
+if guess ==0:
+    print "Sorry, you ran out of guesses. The word was", word, "Better luck next time"
