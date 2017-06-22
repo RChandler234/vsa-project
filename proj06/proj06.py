@@ -1,5 +1,5 @@
-# Name:
-# Date:
+# Name: Kyle and Reid
+# Date:6/22/17
 
 
 # proj06: Hangman
@@ -50,16 +50,11 @@ length=len(word)
 guessed=[]
 lst_word=[]
 blank=[]
-counter=10000
 for number in range (1, length+1):
     lst_word.append(word_copy[0])
     word_copy=word_copy[1:]
 for stuff in range (1,length+1):
     blank.append('_')
-
-
-
-
 
 
 def add(letter):
@@ -193,8 +188,8 @@ while guess !=0:
             print "0        3  2  3"
             print "0          6 6"
             print "0         6   6"
-            print "0        1     1"
-            print "0      __1     1__"
+            print "0        1     "
+            print "0      __1     "
             print "0"
             print "0"
         elif guess==0:
