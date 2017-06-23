@@ -11,8 +11,9 @@ name=raw_input("Enter your name: ")
 age= int(raw_input("Enter your age: "))
 stat= " will turn 100 in the year "
 Bday=raw_input("Have you had your birthday this year yet?: ")
+Bbday=Bday.lower()
 print Bday
-if Bday == yes or Yes:
+if Bday == "yes" or "Yes":
     yrs= 100-age
 else:
     yrs= 99-age
