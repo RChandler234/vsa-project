@@ -212,15 +212,15 @@ def play_hand(hand, word_list):
     while HAND_SIZE != 0 and word != ".":
         print "Current Hand",
         display_hand(hand)
-        word=raw_input("Enter word, or a '.' to indicate that you are finished: ")
-        word=word.lower()
+        word = raw_input("Enter word, or a '.' to indicate that you are finished: ")
+        word = word.lower()
         validity=is_valid_word(word,hand, word_list)
-        if validity==False and word != ".":
+        if validity == False and word != ".":
             print "That is not a valid word, try again"
         elif word != ".":
             score=score+get_word_score(word, n)
             print word, "earned", get_word_score(word,n), "points. Total:", score, "points"
-            hand=update_hand(hand, word)
+            hand = update_hand(hand, word)
     print "Thanks for playing. You earned", score, "points."
 
 word_list=load_words()
