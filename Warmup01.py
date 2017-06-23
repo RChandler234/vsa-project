@@ -49,7 +49,7 @@ for stuff in sentence_string:
 def vowelFinder(lst,vowels):
     vlist=[]
     for things in lst:
-        if things in vowels:
+        if things in vowels and things not in vlist:
             vlist.append(things)
     return vlist
 
