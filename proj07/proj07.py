@@ -213,6 +213,7 @@ def play_hand(hand, word_list):
         print "Current Hand",
         display_hand(hand)
         word=raw_input("Enter word, or a '.' to indicate that you are finished: ")
+        word=word.lower()
         validity=is_valid_word(word,hand, word_list)
         if validity==False and word != ".":
             print "That is not a valid word, try again"
