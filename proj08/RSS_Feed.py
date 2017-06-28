@@ -234,21 +234,57 @@ def readTriggerConfig(filename):
     # 'lines' has a list of lines you need to parse
     # Build a set of triggers from it and
     # return the appropriate ones
-    
+    t_list = []
+    t_dict = {}
+
+    for item in lines:
+        line = item.split()
+        if "TITLE" in item:
+            word = line[2]
+            t_dict[line[0]] = TitleTrigger(word)
+        elif "SUBJECT" in item:
+            word = line[2]
+            t_dict[line[0]] = SubjectTrigger(word)
+        elif "SUMMARY" in item:
+            word = line[2]
+            t_dict[line[0]] = SummaryTrigger(word)
+        elif "NOT" in item:
+            word=line[2]
+            t_dict[line[0]] = NotTrigger(word)
+        elif "AND" in item:
+            t1=t_dict[line[2]]
+            t2=t_dict[line[3]]
+            t_dict[line[0]] = AndTrigger(t1, t2)
+        elif "OR" in item:
+            t1 = line[2]
+            t2 = line[3]
+            t_dict[line[0]] = OrTrigger(t1, t2)
+        elif "PHRASE" in item:
+            phrase = ""
+            for word in line[2:]:
+                phrase = phrase+word + " "
+            t_dict[line[0]] = PhraseTrigger(phrase)
+        elif "ADD" in item:
+            for t in line[1:]:
+                t_list.append(t_dict[t])
+    return t_list
+
+
 import thread
+
 
 def main_thread(p):
     # A sample trigger list - you'll replace
     # this with something more configurable in Problem 11
-    t1 = SubjectTrigger("Trump")
-    t2 = SummaryTrigger("Vanderbilt")
-    t3 = PhraseTrigger("Net Neutrality")
-    t4 = OrTrigger(t2, t3)
-    triggerlist = [t1, t4]
+    # t1 = SubjectTrigger("Trump")
+    # t2 = SummaryTrigger("Trump")
+    # t3 = PhraseTrigger("Trump")
+    # t4 = OrTrigger(t2, t3)
+    # triggerlist = [t1, t4]
     
     # TODO: Problem 11
-    # After implementing readTriggerConfig, uncomment this line 
-    #triggerlist = readTriggerConfig("triggers.txt")
+    # After implementing readTriggerConfig, uncomment this line
+    triggerlist = readTriggerConfig("triggers.txt")
 
     guidShown = []
     
